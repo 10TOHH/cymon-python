@@ -61,3 +61,7 @@ class Cymon(object):
         ''' supported tags: malware, botnet, spam, phishing, dnsbl, blacklist '''
         r = self.get('/blacklist/domain/' + tag + '/?days=%d' %(days))
         return json.loads(r.text)
+        
+    def domain_dga(self, name):
+        r = self.get('/dga/' + name)
+        return json.loads(r.text)
