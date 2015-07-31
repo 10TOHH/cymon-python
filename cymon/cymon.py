@@ -74,3 +74,16 @@ class Cymon(object):
     def domain_dga(self, name):
         r = self.get('/dga/' + name)
         return json.loads(r.text)
+        
+    def recent(self):
+        '''Return recently reported events as on https://cymon.io'''
+        
+        # we need to contact a different endpoint for this; saving the old for future use
+        old_endpoint = self.endpoint
+        self.endpoint = 'https://cymon.io/api/public/'
+        r = self.get('dashboard/recent-objects/')
+        
+        # after getting a response we need to reset the endpoint to the original
+        self.endpoint = old_endpoint
+        return json.loads(r.text)
+        
