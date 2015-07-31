@@ -47,6 +47,11 @@ class Cymon(object):
     def domain_lookup(self, name):
         r = self.get('/domain/' + name)
         return json.loads(r.text)
+    
+    def domain_events(self, name):
+        '''Not sure if this is functioning on Cymon.io'''
+        r = self.get('/domain/' + name + '/events')
+        return json.loads(r.text)
 
     def url_lookup(self, location):
         r = self.get('/url/' + quote_plus(location))
