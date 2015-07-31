@@ -23,6 +23,10 @@ class Cymon(object):
         r = self.session.post(self.endpoint + method, data=json.dumps(params), headers=headers)
         r.raise_for_status()
         return r
+    
+    def list(self):
+        r = self.get('')
+        return json.loads(r.text)
 
     def ip_lookup(self, ip_addr):
         r = self.get('/ip/' + ip_addr)
