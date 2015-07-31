@@ -39,6 +39,10 @@ class Cymon(object):
     def ip_urls(self, ip_addr):
         r = self.get('/ip/' + ip_addr + '/urls')
         return json.loads(r.text)
+        
+    def ip_timeline(self, ip_addr):
+        r = self.get('/ip/' + ip_addr + '/timeline') 
+        return json.loads(r.text)
 
     def domain_lookup(self, name):
         r = self.get('/domain/' + name)
