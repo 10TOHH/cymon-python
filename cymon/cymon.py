@@ -48,6 +48,14 @@ class Cymon(object):
         r = self.get('/ip/' + ip_addr + '/timeline') 
         return json.loads(r.text)
 
+    def ip_malware(self, ip_addr):
+        r = self.get('/ip/' + ip_addr + '/malware/')
+        return json.loads(r.text)
+
+    def hash_events(self, hash):
+        r = self.get('/malware/' + hash + '/events/')
+        return json.loads(r.text)
+        
     def domain_lookup(self, name):
         r = self.get('/domain/' + name)
         return json.loads(r.text)
